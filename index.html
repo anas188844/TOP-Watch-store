@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TOP Watch - متجر الساعات الفاخرة. أفضل الساعات الكلاسيكية والكاجوال للرجال والنساء">
+    <meta name="keywords" content="ساعات, ساعات فاخرة, ساعات رجالية, ساعات نسائية, TOP Watch">
+    <meta name="author" content="TOP Watch">
+    
+    <meta property="og:title" content="TOP Watch - متجر الساعات الفاخرة">
+    <meta property="og:description" content="اكتشف مجموعتنا الفاخرة من الساعات الكلاسيكية والكاجوال">
+    <meta property="og:type" content="website">
+    
+    <title>TOP Watch - متجر الساعات الفاخرة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-logo">
+                <i class="fas fa-crown"></i>
+            </div>
+            <div class="loader-text">TOP Watch</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+         <div class="logo" onclick="app.navigate('home')">
+    <img src="logo.png" alt="TOP Watch" style="width: 50px; height: 50px; object-fit: contain;">
+    <span class="logo-text" id="navStoreName">TOP Watch</span>
+</div>
+                            <defs>
+                                <linearGradient id="logoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFD700"/>
+                                    <stop offset="100%" style="stop-color:#D4AF37"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="48" fill="none" stroke="url(#logoGold)" stroke-width="2"/>
+                            <path d="M50 15 L58 30 L72 30 L62 40 L66 52 L50 44 L34 52 L38 40 L28 30 L42 30 Z" fill="url(#logoGold)"/>
+                            <circle cx="50" cy="50" r="18" fill="none" stroke="url(#logoGold)" stroke-width="1.5"/>
+                            <text x="22" y="55" font-family="Georgia, serif" font-size="22" fill="url(#logoGold)" font-weight="bold">T</text>
+                            <text x="62" y="55" font-family="Georgia, serif" font-size="22" fill="url(#logoGold)" font-weight="bold">P</text>
+                            <text x="50" y="78" font-family="Georgia, serif" font-size="10" fill="url(#logoGold)" text-anchor="middle" letter-spacing="2">WATCH</text>
+                        </svg>
+                    </div>
+                    <span class="logo-text" id="navStoreName">TOP Watch</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <ul class="nav-menu desktop-menu">
+                    <li><a href="#" onclick="app.navigate('home')" class="active">الرئيسية</a></li>
+                    <li><a href="#" onclick="app.filterByCategory('men-classic')">رجالي كلاسيك</a></li>
+                    <li><a href="#" onclick="app.filterByCategory('men-casual')">رجالي كاجوال</a></li>
+                    <li><a href="#" onclick="app.filterByCategory('women')">حريمي</a></li>
+                    <li><a href="#" onclick="app.navigate('contact')">تواصل معنا</a></li>
+                </ul>
+
+                <!-- Search & Cart -->
+                <div class="nav-actions">
+                    <!-- Sound Toggle -->
+                    <div class="sound-toggle" onclick="toggleSound()" title="تشغيل/إيقاف النغمات" id="soundToggleBtn">
+                        <i class="fas fa-volume-up" id="soundIcon"></i>
+                    </div>
+
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="ابحث عن ساعة..." onkeyup="app.searchProducts(this.value)">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="cart-icon" onclick="app.toggleCart()">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+
+                    <div class="mobile-menu-btn" onclick="app.toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <ul class="nav-menu mobile-menu" id="mobileMenu">
+                <li><a href="#" onclick="app.navigate('home'); app.toggleMobileMenu()">الرئيسية</a></li>
+                <li><a href="#" onclick="app.filterByCategory('men-classic'); app.toggleMobileMenu()">رجالي كلاسيك</a></li>
+                <li><a href="#" onclick="app.filterByCategory('men-casual'); app.toggleMobileMenu()">رجالي كاجوال</a></li>
+                <li><a href="#" onclick="app.filterByCategory('women'); app.toggleMobileMenu()">حريمي</a></li>
+                <li><a href="#" onclick="app.navigate('contact'); app.toggleMobileMenu()">تواصل معنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Content will be injected here by JavaScript -->
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-overlay" onclick="app.toggleCart()"></div>
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>سلة المشتريات</h2>
+                <button class="close-cart" onclick="app.toggleCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be injected here -->
+            </div>
+
+            <div class="cart-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>الإجمالي:</span>
+                    <span id="cartTotal">0 ج.م</span>
+                </div>
+                <button class="btn btn-primary btn-full" onclick="app.navigate('checkout')">
+                    إتمام الطلب <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>السلة فارغة</p>
+                <button class="btn btn-primary" onclick="app.toggleCart(); app.navigate('home')">
+                    تسوق الآن
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="#" class="whatsapp-float" id="whatsappFloat" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer" id="mainFooter">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3 id="footerStoreName">TOP Watch</h3>
+                    </div>
+                    <p>وجهتك الأولى للساعات الفاخرة. نقدم لك أفضل الماركات العالمية بأسعار منافسة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#" onclick="app.navigate('home')">الرئيسية</a></li>
+                        <li><a href="#" onclick="app.filterByCategory('men-classic')">الساعات الرجالية</a></li>
+                        <li><a href="#" onclick="app.filterByCategory('women')">الساعات النسائية</a></li>
+                        <li><a href="#" onclick="app.navigate('contact')">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>طرق الدفع</h4>
+                    <div class="payment-methods">
+                        <div class="payment-item">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>الدفع عند الاستلام</span>
+                        </div>
+                        <div class="payment-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>فودافون كاش</span>
+                        </div>
+                        <div class="payment-item">
+                            <i class="fas fa-university"></i>
+                            <span>إنستاباي</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> <span id="footerPhone"></span></li>
+                        <li><i class="fas fa-envelope"></i> <span>info@topwatch.com</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>القاهرة، مصر</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 TOP Watch. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
